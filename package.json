@@ -1,0 +1,38 @@
+{
+  "name": "eggplant",
+  "version": "0.0.0",
+  "description": "A node and browser compatible command line parser.",
+  "keywords": [
+    "option parser",
+    "command line"
+  ],
+  "author": "leeolayvar <leeolayvar@gmail.com> (http://leeolayvar.com)",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/leeolayvar/eggplant.git"
+  },
+  "bugs": {
+    "url": "http://github.com/leeolayvar/eggplant/issues"
+  },
+  "scripts": {
+    "prepublish": "cake prepublish",
+    "test": "cake test"
+  },
+  "devDependencies": {
+    "coffee-script": "1.3.x",
+    "dork": "0.0.x",
+    "should": "1.x.x",
+    
+    "bork": "0.0.x",
+    "walker": "1.0.3"
+  },
+  "dependencies": {
+  },
+  "main": "./build/lib/index.js",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://raw.github.com/leeolayvar/eggplant/master/LICENSE"
+    }
+  ]
+}
