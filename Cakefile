@@ -15,6 +15,7 @@ Walker = require 'walker'
 
 
 COFFEE_BIN = './node_modules/coffee-script/bin/coffee'
+BROWSERIFY_BIN = './node_modules/browserify/bin/cmd.js'
 
 
 
@@ -104,20 +105,26 @@ task 'build', 'build all', ->
   bork_task.start()
 
 task 'build:browser', 'build browser', ->
-  console.log 'build:browser start()'
-  console.log 'build:browser end'
+  bork_task.link (done) ->
+    console.log 'build:browser start()'
+    exec BROWSERIFY_BIN, ['./browser/eggplant.coffee',
+        '-o', 'build/browser/eggplant.js'], ->
+      console.log 'build:browser end'
+      done()
 
 task 'build:lib', 'build lib', ->
-  console.log 'build:lib start()'
-  bork_task.link (done) -> copy_compile './lib', './build/lib', ->
-    console.log 'build:lib end'
-    done()
+  bork_task.link (done) ->
+    console.log 'build:lib start()'
+    copy_compile './lib', './build/lib', ->
+      console.log 'build:lib end'
+      done()
 
 task 'build:test', 'build test', ->
-  console.log 'build:test start()'
-  bork_task.link (done) -> copy_compile './test', './build/test', ->
-    console.log 'build:test end'
-    done()
+  bork_task.link (done) ->
+    console.log 'build:test start()'
+    copy_compile './test', './build/test', ->
+      console.log 'build:test end'
+      done()
 
 task 'test', 'build test, then run it', ->
   invoke 'build:test'
